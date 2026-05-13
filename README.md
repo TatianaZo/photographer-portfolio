@@ -1,5 +1,16 @@
 # PhotographerPortfolio
 
+## Сайт на GitHub Pages
+
+Сборка лежит в артефакте Actions, а не в корне репозитория. Если в настройках Pages выбрано **Deploy from a branch**, GitHub покажет этот `README` вместо приложения.
+
+1. Откройте **Settings → Pages**.
+2. В блоке **Build and deployment** поле **Source** переключите на **GitHub Actions** (не ветку `main` и не папку `/ (root)`).
+3. Во вкладке **Actions** дождитесь успешного workflow **Deploy to GitHub Pages** (при необходимости запустите его вручную: **Run workflow**).
+4. Сайт: `https://tatianazo.github.io/photographer-portfolio/`
+
+---
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.25.
 
 ## Development server

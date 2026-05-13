@@ -3,6 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -26,6 +27,8 @@ jobs:
       - run: npm run build -- --configuration=github-pages
       - name: SPA fallback (refresh on deep links)
         run: cp dist/photographer-portfolio/browser/index.html dist/photographer-portfolio/browser/404.html
+      - name: Disable Jekyll on static artifact
+        run: touch dist/photographer-portfolio/browser/.nojekyll
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist/photographer-portfolio/browser
