@@ -1,0 +1,31 @@
+.legal-page {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: clamp(2rem, 6vw, 4rem) 1.25rem 4rem;
+}
+
+.legal-page__article h1 {
+  font-size: clamp(1.35rem, 3vw, 1.75rem);
+  margin: 0 0 1.25rem;
+  line-height: 1.25;
+  color: var(--text);
+}
+
+.legal-page__article p {
+  margin: 0 0 1rem;
+  line-height: 1.65;
+  color: var(--text);
+  opacity: 0.92;
+}
+
+.legal-page__back {
+  display: inline-block;
+  margin-top: 1.5rem;
+  color: var(--accent-2, currentColor);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.legal-page__back:hover {
+  text-decoration-thickness: 2px;
+}

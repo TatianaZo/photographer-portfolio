@@ -1,0 +1,148 @@
+<section class="hero" id="top" [attr.aria-label]="'hero.aria' | t">
+  <div class="hero__media">
+    <img src="gallery/01.png" [alt]="'hero.imgAlt' | t" decoding="async" fetchpriority="high" />
+    <div class="hero__veil" aria-hidden="true"></div>
+  </div>
+  <div class="hero__content">
+    <p class="hero__kicker">{{ 'hero.kicker' | t }}</p>
+    <h1 class="hero__title">{{ 'hero.title' | t }}</h1>
+    <p class="hero__lead">{{ 'hero.lead' | t }}</p>
+    <a class="hero__cta" href="#work">{{ 'hero.cta' | t }}</a>
+  </div>
+</section>
+
+<section class="work section" id="work" aria-labelledby="work-heading">
+  <div class="section__head">
+    <h2 id="work-heading">{{ 'work.heading' | t }}</h2>
+    <p class="section__sub">{{ 'work.sub' | t }}</p>
+  </div>
+
+  <div class="gallery" role="list">
+    @for (item of items; track item.id) {
+      <button
+        type="button"
+        class="gallery__cell"
+        [class.gallery__cell--tall]="item.rowSpan === 2"
+        (click)="openLightbox(item)"
+        [attr.aria-label]="i18n.galleryOpenAria(item.titleKey)"
+        role="listitem"
+      >
+        <span class="gallery__img-wrap">
+          <img
+            [src]="item.src"
+            [alt]="i18n.galleryTitle(item.titleKey)"
+            loading="lazy"
+            decoding="async"
+          />
+        </span>
+        <span class="gallery__meta">
+          <span class="gallery__category">{{ i18n.categoryLabel(item.categoryKey) }}</span>
+          <span class="gallery__title">{{ i18n.galleryTitle(item.titleKey) }}</span>
+        </span>
+      </button>
+    }
+  </div>
+</section>
+
+<section class="about section" id="about" aria-labelledby="about-heading">
+  <div class="about__grid">
+    <div class="about__visual">
+      <img src="gallery/08.png" [alt]="'about.imgAlt' | t" loading="lazy" decoding="async" />
+    </div>
+    <div class="about__copy">
+      <h2 id="about-heading">{{ 'about.heading' | t }}</h2>
+      <p>{{ 'about.p1' | t }}</p>
+      <p>{{ 'about.p2' | t }}</p>
+      <ul class="about__facts">
+        <li><span>{{ 'about.f1l' | t }}</span> {{ 'about.f1v' | t }}</li>
+        <li><span>{{ 'about.f2l' | t }}</span> {{ 'about.f2v' | t }}</li>
+        <li><span>{{ 'about.f3l' | t }}</span> {{ 'about.f3v' | t }}</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="pricing section" id="pricing" aria-labelledby="pricing-heading">
+  <div class="section__head">
+    <h2 id="pricing-heading">{{ 'pricing.heading' | t }}</h2>
+    <p class="section__sub">{{ 'pricing.sub' | t }}</p>
+  </div>
+
+  <div class="pricing__grid">
+    <article class="pricing__card" aria-labelledby="pricing-min-title">
+      <p class="pricing__tag">{{ 'pricing.min.tag' | t }}</p>
+      <h3 id="pricing-min-title">{{ 'pricing.min.title' | t }}</h3>
+      <p class="pricing__price">{{ 'pricing.min.price' | t }}</p>
+      <ul class="pricing__list">
+        <li>{{ 'pricing.min.i1' | t }}</li>
+        <li>{{ 'pricing.min.i2' | t }}</li>
+        <li>{{ 'pricing.min.i3' | t }}</li>
+        <li>{{ 'pricing.min.i4' | t }}</li>
+      </ul>
+    </article>
+
+    <article class="pricing__card pricing__card--featured" aria-labelledby="pricing-mid-title">
+      <p class="pricing__tag">{{ 'pricing.mid.tag' | t }}</p>
+      <h3 id="pricing-mid-title">{{ 'pricing.mid.title' | t }}</h3>
+      <p class="pricing__price">{{ 'pricing.mid.price' | t }}</p>
+      <ul class="pricing__list">
+        <li>{{ 'pricing.mid.i1' | t }}</li>
+        <li>{{ 'pricing.mid.i2' | t }}</li>
+        <li>{{ 'pricing.mid.i3' | t }}</li>
+        <li>{{ 'pricing.mid.i4' | t }}</li>
+      </ul>
+    </article>
+
+    <article class="pricing__card" aria-labelledby="pricing-max-title">
+      <p class="pricing__tag">{{ 'pricing.max.tag' | t }}</p>
+      <h3 id="pricing-max-title">{{ 'pricing.max.title' | t }}</h3>
+      <p class="pricing__price">{{ 'pricing.max.price' | t }}</p>
+      <ul class="pricing__list">
+        <li>{{ 'pricing.max.i1' | t }}</li>
+        <li>{{ 'pricing.max.i2' | t }}</li>
+        <li>{{ 'pricing.max.i3' | t }}</li>
+        <li>{{ 'pricing.max.i4' | t }}</li>
+        <li>{{ 'pricing.max.i5' | t }}</li>
+      </ul>
+    </article>
+  </div>
+
+  <p class="pricing__note">{{ 'pricing.note' | t }}</p>
+  <div class="pricing__cta-wrap">
+    <a class="pricing__cta" href="#contact">{{ 'pricing.cta' | t }}</a>
+  </div>
+</section>
+
+<section class="contact section" id="contact" aria-labelledby="contact-heading">
+  <div class="contact__inner">
+    <h2 id="contact-heading">{{ 'contact.heading' | t }}</h2>
+    <p>{{ 'contact.lead' | t }}</p>
+    <a class="contact__mail" [href]="'mailto:' + contactEmail">{{ contactEmail }}</a>
+  </div>
+</section>
+
+@if (lightboxItem(); as active) {
+  <div
+    class="lightbox"
+    role="dialog"
+    aria-modal="true"
+    [attr.aria-label]="i18n.galleryTitle(active.titleKey)"
+    (click)="closeLightbox()"
+  >
+    <button
+      type="button"
+      class="lightbox__close"
+      (click)="closeLightbox(); $event.stopPropagation()"
+      [attr.aria-label]="'lightbox.close' | t"
+    >
+      ×
+    </button>
+    <figure class="lightbox__figure" (click)="$event.stopPropagation()">
+      <img [src]="active.src" [alt]="i18n.galleryTitle(active.titleKey)" decoding="async" />
+      <figcaption>
+        <span class="lightbox__cat">{{ i18n.categoryLabel(active.categoryKey) }}</span>
+        <span class="lightbox__title">{{ i18n.galleryTitle(active.titleKey) }}</span>
+      </figcaption>
+    </figure>
+  </div>
+}

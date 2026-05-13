@@ -1,0 +1,89 @@
+<header class="site-header" [class.site-header--solid]="headerSolid()">
+  <a class="site-header__brand" href="#top" (click)="closeNav()">{{ 'brand' | t }}</a>
+
+  <nav id="site-nav" class="site-nav" [class.site-nav--open]="navOpen()">
+    <a href="#top" (click)="closeNav()">{{ 'nav.home' | t }}</a>
+    <a href="#work" (click)="closeNav()">{{ 'nav.portfolio' | t }}</a>
+    <a href="#about" (click)="closeNav()">{{ 'nav.about' | t }}</a>
+    <a href="#pricing" (click)="closeNav()">{{ 'nav.pricing' | t }}</a>
+    <a href="#contact" (click)="closeNav()">{{ 'nav.contact' | t }}</a>
+  </nav>
+
+  <div class="site-header__tools">
+    <div class="pill-bar" role="group" [attr.aria-label]="'toolbar.lang' | t">
+      <span class="sr-only">{{ 'toolbar.lang' | t }}</span>
+      @for (code of langs; track code) {
+        <button
+          type="button"
+          class="pill-bar__btn"
+          [class.pill-bar__btn--active]="i18n.lang() === code"
+          (click)="setLang(code)"
+        >
+          {{ code | uppercase }}
+        </button>
+      }
+    </div>
+
+    <div class="pill-bar" role="group" [attr.aria-label]="'toolbar.theme' | t">
+      <span class="sr-only">{{ 'toolbar.theme' | t }}</span>
+      <button
+        type="button"
+        class="pill-bar__btn"
+        [class.pill-bar__btn--active]="theme.themeId() === 'light'"
+        (click)="theme.setTheme('light')"
+      >
+        {{ 'theme.light' | t }}
+      </button>
+      <button
+        type="button"
+        class="pill-bar__btn"
+        [class.pill-bar__btn--active]="theme.themeId() === 'dark'"
+        (click)="theme.setTheme('dark')"
+      >
+        {{ 'theme.dark' | t }}
+      </button>
+    </div>
+  </div>
+
+  <button
+    type="button"
+    class="site-header__toggle"
+    (click)="toggleNav()"
+    [attr.aria-expanded]="navOpen()"
+    aria-controls="site-nav"
+    [attr.aria-label]="'aria.menu' | t"
+  >
+    <span></span><span></span>
+  </button>
+</header>
+
+<main class="site-main">
+  <router-outlet />
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__band">
+    <div class="site-footer__meta">
+      <span class="site-footer__line">© {{ year }} {{ 'footer.credit' | t }}. {{ 'footer.rights' | t }}.</span>
+    </div>
+
+    <nav class="site-footer__legal" [attr.aria-label]="'footer.legal.navLabel' | t">
+      <ul class="site-footer__legal-list">
+        <li>
+          <a routerLink="/legal/privacy">{{ 'footer.legal.privacy' | t }}</a>
+        </li>
+        <li>
+          <a routerLink="/legal/terms">{{ 'footer.legal.terms' | t }}</a>
+        </li>
+        <li>
+          <a routerLink="/legal/cookies">{{ 'footer.legal.cookies' | t }}</a>
+        </li>
+        <li>
+          <a routerLink="/legal/offer">{{ 'footer.legal.offer' | t }}</a>
+        </li>
+      </ul>
+    </nav>
+
+    <p class="site-footer__note">{{ 'footer.note' | t }}</p>
+  </div>
+</footer>

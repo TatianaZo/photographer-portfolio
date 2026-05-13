@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+
+[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #0a0a0b;
+  --bg-soft: #121214;
+  --surface: #18181b;
+  --text: #f5f2eb;
+  --muted: rgba(245, 242, 235, 0.62);
+  --faint: rgba(245, 242, 235, 0.38);
+  --line: rgba(245, 242, 235, 0.1);
+  --accent: #d4af37;
+  --accent-2: #e8c76a;
+  --body-bg: radial-gradient(120% 80% at 50% -10%, #1a1814 0%, var(--bg) 55%);
+  --hero-veil: linear-gradient(
+      180deg,
+      rgba(6, 6, 8, 0.15) 0%,
+      rgba(6, 6, 8, 0.55) 55%,
+      rgba(6, 6, 8, 0.92) 100%
+    ),
+    radial-gradient(70% 50% at 50% 0%, rgba(212, 175, 55, 0.12), transparent 70%);
+  --gallery-shade: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.72));
+  --about-band: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.02));
+  --about-shadow: 0 28px 80px rgba(0, 0, 0, 0.45);
+  --lightbox-bg: rgba(4, 4, 6, 0.88);
+  --lightbox-img-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+  --pill-bg: rgba(255, 255, 255, 0.06);
+  --pill-border: rgba(255, 255, 255, 0.14);
+  --pill-active-bg: rgba(212, 175, 55, 0.16);
+  --pill-active-border: rgba(212, 175, 55, 0.45);
+  --header-ghost-shadow: 0 1px 18px rgba(0, 0, 0, 0.55);
+  --on-media: #f5f2eb;
+  --on-media-sub: rgba(245, 242, 235, 0.78);
+}
+
+[data-theme='light'] {
+  color-scheme: light;
+  --bg: #faf9f6;
+  --bg-soft: #f3f1ec;
+  --surface: #ffffff;
+  --text: #141414;
+  --muted: rgba(20, 20, 20, 0.62);
+  --faint: rgba(20, 20, 20, 0.45);
+  --line: rgba(20, 20, 20, 0.12);
+  --accent: #8a5a1c;
+  --accent-2: #6b4715;
+  --body-bg: radial-gradient(120% 70% at 50% -5%, #ebe7df 0%, var(--bg) 60%);
+  --hero-veil: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.08) 0%,
+      rgba(250, 248, 242, 0.55) 55%,
+      rgba(250, 248, 242, 0.94) 100%
+    ),
+    radial-gradient(70% 50% at 50% 0%, rgba(255, 180, 70, 0.14), transparent 70%);
+  --gallery-shade: linear-gradient(180deg, transparent 35%, rgba(20, 20, 20, 0.55));
+  --about-band: linear-gradient(180deg, transparent, rgba(20, 20, 20, 0.04));
+  --about-shadow: 0 28px 80px rgba(20, 20, 20, 0.12);
+  --lightbox-bg: rgba(250, 249, 246, 0.94);
+  --lightbox-img-shadow: 0 24px 60px rgba(20, 20, 20, 0.18);
+  --pill-bg: rgba(20, 20, 20, 0.04);
+  --pill-border: rgba(20, 20, 20, 0.12);
+  --pill-active-bg: rgba(138, 90, 28, 0.12);
+  --pill-active-border: rgba(138, 90, 28, 0.45);
+  --header-ghost-shadow: 0 1px 14px rgba(255, 255, 255, 0.75), 0 1px 3px rgba(0, 0, 0, 0.35);
+  --on-media: #ffffff;
+  --on-media-sub: rgba(255, 255, 255, 0.82);
+}
+
+:root {
+  --header-h: 4.5rem;
+  --maxw: 1180px;
+  --pad-x: clamp(1.1rem, 4vw, 2.5rem);
+  --font-serif: 'Cormorant Garamond', ui-serif, Georgia, 'Times New Roman', serif;
+  --font-sans: 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--body-bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: clamp(0.95rem, 0.9rem + 0.2vw, 1.05rem);
+  font-weight: 400;
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  line-height: 1.15;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Демо: без выделения текста и «текстового» курсора на абзацах (не похоже на редактор) */
+.site-main,
+.site-main * {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.site-main .contact__mail {
+  -webkit-user-select: text;
+  user-select: text;
+  cursor: text;
+}
+
+.site-main :where(p, h1, h2, h3, li, figcaption) {
+  cursor: default;
+}
+
+.site-main a:not(.contact__mail),
+.site-main button,
+.site-main [role='button'] {
+  cursor: pointer;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

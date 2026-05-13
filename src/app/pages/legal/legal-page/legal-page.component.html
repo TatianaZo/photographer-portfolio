@@ -1,0 +1,11 @@
+<div class="legal-page">
+  @if (section(); as sid) {
+    <article class="legal-page__article">
+      <h1>{{ ('legal.' + sid + '.title') | t }}</h1>
+      <p>{{ ('legal.' + sid + '.p1') | t }}</p>
+      <p>{{ ('legal.' + sid + '.p2') | t }}</p>
+      <p>{{ ('legal.' + sid + '.p3') | t }}</p>
+      <a routerLink="/" class="legal-page__back">{{ 'legal.backHome' | t }}</a>
+    </article>
+  }
+</div>
