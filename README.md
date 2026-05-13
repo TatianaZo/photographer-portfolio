@@ -2,12 +2,13 @@
 
 ## Сайт на GitHub Pages
 
-Сборка лежит в артефакте Actions, а не в корне репозитория. Если в настройках Pages выбрано **Deploy from a branch**, GitHub покажет этот `README` вместо приложения.
+Сайт собирается в Actions и выкладывается в ветку **`gh-pages`** (в корне лежит `index.html`, а не этот README).
 
-1. Откройте **Settings → Pages**.
-2. В блоке **Build and deployment** поле **Source** переключите на **GitHub Actions** (не ветку `main` и не папку `/ (root)`).
-3. Во вкладке **Actions** дождитесь успешного workflow **Deploy to GitHub Pages** (при необходимости запустите его вручную: **Run workflow**).
-4. Сайт: `https://tatianazo.github.io/photographer-portfolio/`
+1. **Settings → Pages**.
+2. **Build and deployment → Source**: **Deploy from a branch**.
+3. Ветка: **`gh-pages`**, папка: **`/ (root)`** (не `main`).
+4. Во вкладке **Actions** дождитесь зелёного **Deploy to GitHub Pages** или нажмите **Run workflow**.
+5. Адрес: `https://tatianazo.github.io/photographer-portfolio/`
 
 ---
 
